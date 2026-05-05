@@ -1,0 +1,94 @@
+﻿function renderCollection() {
+  const grid = document.getElementById('collectionGrid');
+  const filtered = getFiltered();
+  document.getElementById('propCount').textContent = filtered.length;
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">âˆ…</div>
+        <h3 class="empty-title">${i18n[lang].empty_title}</h3>
+        <p class="empty-desc">${i18n[lang].empty_desc}</p>
+        <button class="empty-clear" onclick="clearFilters()">${i18n[lang].empty_clear}</button>
+      </div>
+    `;
+    document.getElementById('loadMoreRow').style.display = 'none';
+    return;
+  }
+
+  const visible = filtered.slice(0, currentPage * PAGE_SIZE);
+  document.getElementById('loadMoreRow').style.display = visible.length < filtered.length ? 'flex' : 'none';
+
+  grid.innerHTML = visible.map((p, idx) => {
+    const isShort = mode === 'short';
+    const priceDisplay = isShort ? formatPrice(p.price, 'USD') : formatPrice(p.price, 'COP');
+    const periodDisplay = isShort
+      ? (lang === 'es' ? '/ NOCHE USD' : '/ NIGHT USD')
+      : (lang === 'es' ? '/ MES COP' : '/ MONTH COP');
+    const animDelay = Math.min((idx % PAGE_SIZE) * 30, 360);
+
+    const features = [];
+    if (isShort && p.guests) features.push(`<div class="prop-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>${p.guests}</div>`);
+    if (p.rooms) features.push(`<div class="prop-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>${p.rooms}</div>`);
+    if (p.bathrooms) features.push(`<div class="prop-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12H2"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>${p.bathrooms}</div>`);
+    if (!isShort && p.area) features.push(`<div class="prop-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>${p.area}mÂ²</div>`);
+
+    const badges = [];
+    if (p.featured) badges.push(`<span class="prop-badge gold">${lang === 'es' ? 'Destacado' : 'Featured'}</span>`);
+    if (p.rating) badges.push(`<span class="prop-badge rating">â˜… ${p.rating}</span>`);
+
+    return `
+      <div class="prop-card" onclick="openModal('${p.id}')" style="animation-delay:${animDelay}ms">
+        <div class="prop-img">
+          ${p.img
+            ? `<img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='${generatePlaceholder(p.name, p.zone).replace(/'/g, "&#39;")}'">`
+            : generatePlaceholder(p.name, p.zone)}
+          <div class="prop-badges">${badges.join('')}</div>
+          <button class="prop-fav" onclick="event.stopPropagation();this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â™¥':'â™¡'" aria-label="Favorite">â™¡</button>
+        </div>
+        <div class="prop-info">
+          <div class="prop-zone">${p.zone}</div>
+          <div class="prop-name">${p.name}</div>
+          <div class="prop-features">${features.join('')}</div>
+          <div class="prop-bottom">
+            <div class="prop-price num">${priceDisplay}<span class="prop-price-period">${periodDisplay}</span></div>
+            <button class="prop-cta" onclick="event.stopPropagation();inquireProperty('${p.id}')">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075z"/></svg>
+              ${i18n[lang].btn_inquire}
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// === FILTERS ===
+function getFiltered() {
+  let result = [...getCurrentProperties()];
+  const zone = document.getElementById('filterZone').value;
+  const type = document.getElementById('filterType').value;
+  const sort = document.getElementById('filterSort').value;
+
+  if (zone !== 'all') result = result.filter(p => p.zone === zone);
+  if (type !== 'all') result = result.filter(p => p.type === type);
+  if (mode === 'short') {
+    const guests = parseInt(document.getElementById('filterGuests').value);
+    if (guests > 0) result = result.filter(p => (p.guests || 0) >= guests);
+  } else {
+    const rooms = parseInt(document.getElementById('filterRooms').value);
+    if (rooms > 0) result = result.filter(p => (p.rooms || 0) >= rooms);
+  }
+
+  if (sort === 'price-low') result.sort((a, b) => a.price - b.price);
+  else if (sort === 'price-high') result.sort((a, b) => b.price - a.price);
+  else if (sort === 'capacity') result.sort((a, b) => (b.guests || b.rooms || 0) - (a.guests || a.rooms || 0));
+  else result.sort((a, b) => ((b.featured ? 1 : 0) - (a.featured ? 1 : 0)) || (b.price - a.price));
+
+  return result;
+}
+function filterProperties() {
+  currentPage = 1;
+  renderCollection();
+}
+function clearFilters(reRender = true) {
