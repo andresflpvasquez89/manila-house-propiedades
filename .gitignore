@@ -25,3 +25,7 @@ npm-debug.log*
 # Backups
 *.bak
 *.backup
+
+footer.txt
+render-*.txt
+
