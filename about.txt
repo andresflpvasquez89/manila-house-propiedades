@@ -1,0 +1,80 @@
+﻿     ===================================================================== -->
+<section class="about-section" id="about">
+  <div class="about-frame">
+    <div class="about-content">
+      <div class="about-eyebrow" data-i18n="about_eyebrow">SOBRE NOSOTROS</div>
+      <h2 class="about-title" data-i18n="about_title">No somos plataforma. Somos <em>curadores</em>.</h2>
+      <p class="about-text" data-i18n="about_text_1">Manila House naciÃ³ de una convicciÃ³n: en Colombia hay propiedades extraordinarias, pero el proceso de encontrar la indicada estÃ¡ roto. Nosotros lo arreglamos.</p>
+      <p class="about-text" data-i18n="about_text_2">Cada propiedad de nuestra colecciÃ³n es seleccionada y supervisada por nuestro equipo. No publicamos lo que llega â€” publicamos lo que cumple. AtenciÃ³n directa, criterio editorial, y conocimiento real de las mejores zonas del paÃ­s.</p>
+      <div class="about-features">
+        <div class="about-feat">
+          <div class="about-feat-num"><span class="num" data-counter="100">0</span><em>%</em></div>
+          <div class="about-feat-label" data-i18n="feat1">Verificadas</div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-num"><span class="num" data-counter="24">0</span><em>/7</em></div>
+          <div class="about-feat-label" data-i18n="feat2">Soporte WhatsApp</div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-num"><span class="num" data-counter="14">0</span></div>
+          <div class="about-feat-label" data-i18n="feat3">Zonas exclusivas</div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-num">â˜… <span class="num" data-counter="48">0</span></div>
+          <div class="about-feat-label" data-i18n="feat4">Top Rated</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-image" id="aboutImage">
+      <div class="about-image-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     PROCESS
+     ===================================================================== -->
+<section class="process-section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow" data-i18n="process_eyebrow">CÃ“MO FUNCIONA</div>
+        <h2 class="section-title" data-i18n="process_title">Encontrar tu prÃ³ximo lugar deberÃ­a ser <em>simple</em>.</h2>
+      </div>
+      <p class="section-desc" data-i18n="process_desc">Te acompaÃ±amos para que encuentres una propiedad alineada con tus fechas, presupuesto y estilo de vida.</p>
+    </div>
+    <div class="process-grid">
+      <article class="process-card">
+        <span class="process-num">01</span>
+        <h3 data-i18n="process_1_title">Explora la colecciÃ³n</h3>
+        <p data-i18n="process_1_desc">Filtra por zona, tipo de propiedad, capacidad o modalidad de renta.</p>
+      </article>
+      <article class="process-card">
+        <span class="process-num">02</span>
+        <h3 data-i18n="process_2_title">CuÃ©ntanos quÃ© necesitas</h3>
+        <p data-i18n="process_2_desc">EscrÃ­benos por WhatsApp y te ayudamos a validar disponibilidad, rango de precio y opciones ideales.</p>
+      </article>
+      <article class="process-card">
+        <span class="process-num">03</span>
+        <h3 data-i18n="process_3_title">Elige con acompaÃ±amiento real</h3>
+        <p data-i18n="process_3_desc">Recibes atenciÃ³n directa para avanzar con seguridad, sin navegar decenas de listados irrelevantes.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     COLLECTION (FULL GRID)
+     ===================================================================== -->
+<section class="collection-section" id="collection">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow" data-i18n="collection_eyebrow">EXPLORAR TODO</div>
+        <h2 class="section-title" data-i18n="collection_title">Toda la <em>colecciÃ³n</em></h2>
+      </div>
+      <p class="section-desc" data-i18n="collection_desc">70+ propiedades amobladas en las mejores zonas de Colombia. Filtra por modo, zona, tipo y capacidad.</p>
+    </div>
+

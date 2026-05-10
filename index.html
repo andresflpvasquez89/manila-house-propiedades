@@ -1740,6 +1740,63 @@ a { color: inherit; text-decoration: none; }
 }
 .modal-img .prop-img-placeholder { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
 
+/* === GALLERY === */
+.modal-gallery { position: relative; width: 100%; height: 100%; }
+.modal-gallery > img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: opacity .25s ease;
+}
+.modal-gallery-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,.92); border: none;
+  color: var(--ink); font-size: 28px; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,.18);
+  transition: background .2s, transform .2s;
+  z-index: 5;
+}
+.modal-gallery-nav:hover { background: #fff; transform: translateY(-50%) scale(1.05); }
+.modal-gallery-nav.prev { left: 16px; }
+.modal-gallery-nav.next { right: 16px; }
+.modal-gallery-counter {
+  position: absolute; top: 16px; left: 16px;
+  background: rgba(0,0,0,.55); color: #fff;
+  padding: 6px 12px; border-radius: 999px;
+  font-family: var(--mono); font-size: 12px; letter-spacing: .5px;
+  backdrop-filter: blur(6px);
+  z-index: 5;
+}
+.modal-gallery-thumbs {
+  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 6px;
+  max-width: calc(100% - 32px);
+  overflow-x: auto;
+  padding: 6px 8px;
+  background: rgba(0,0,0,.35);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  z-index: 5;
+  scrollbar-width: none;
+}
+.modal-gallery-thumbs::-webkit-scrollbar { display: none; }
+.modal-gallery-thumb {
+  flex: 0 0 auto;
+  width: 44px; height: 32px;
+  padding: 0; border: 2px solid transparent; border-radius: 6px;
+  overflow: hidden; cursor: pointer; background: transparent;
+  opacity: .6; transition: opacity .2s, border-color .2s;
+}
+.modal-gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.modal-gallery-thumb.active { opacity: 1; border-color: var(--gold); }
+.modal-gallery-thumb:hover { opacity: 1; }
+@media (max-width: 600px) {
+  .modal-gallery-nav { width: 38px; height: 38px; font-size: 24px; }
+  .modal-gallery-nav.prev { left: 8px; }
+  .modal-gallery-nav.next { right: 8px; }
+  .modal-gallery-thumbs { display: none; }
+}
+
 .modal-body { padding: 32px clamp(24px, 4vw, 40px) 36px; }
 .modal-zone {
   font-family: var(--mono);
@@ -2328,13 +2385,13 @@ const aboutImage = 'https://a0.muscache.com/im/pictures/hosting/Hosting-11873892
 // === SHORT-STAY PROPERTIES (USD/night) ===
 const shortStayProperties = [
   { id:'s1', name:'Pink House', zone:'El Poblado', type:'house', guests:16, rooms:6, bathrooms:7, rating:'5.0', price:1200, featured:true, pool:true, jacuzzi:true,
-    img:'https://a0.muscache.com/im/pictures/hosting/Hosting-1290858101998884441/original/9bb39106-450c-40eb-b299-9d38993d32bd.png?im_w=1200',
+    img:'/images/properties/s1.jpg',
     airbnb:'https://es-l.airbnb.com/rooms/1290858101998884441',
     desc_en:'Exclusive celebrity mansion in El Poblado. 6 bedrooms, 7.5 baths, pool, jacuzzi, ping pong, basketball.',
     desc_es:'Exclusiva mansión de famosos en El Poblado. 6 habitaciones, 7.5 baños, piscina, jacuzzi, ping pong, baloncesto.',
     amenities:['Piscina','Jacuzzi','WiFi','Basketball','Ping Pong','BBQ','Parking','A/C','Cocina'] },
   { id:'s2', name:'Villa Envigado', zone:'Envigado', type:'house', guests:16, rooms:6, bathrooms:6, rating:'4.86', price:500, featured:true, pool:true, jacuzzi:true,
-    img:'https://a0.muscache.com/im/pictures/hosting/Hosting-1101004620982087552/original/26633c87-94b5-4127-b76c-07789dd00726.jpeg?im_w=1200',
+    img:'/images/properties/s2.jpg',
     airbnb:'https://es-l.airbnb.com/rooms/1101004620982087552',
     desc_en:'Luxury villa with pool, jacuzzi, ping pong, and basketball court in Envigado.',
     desc_es:'Villa de lujo con piscina, jacuzzi, ping pong y cancha de baloncesto en Envigado.',
@@ -2346,43 +2403,43 @@ const shortStayProperties = [
     desc_es:'Dos apartamentos dúplex conectados en el corazón de Manila, El Poblado. 7 habitaciones, 10 camas.',
     amenities:['WiFi','A/C','Balcón','Vista','Cocina','Parking','Pet Friendly','3 Salas'] },
   { id:'s4', name:'Manila 5 — Basketball', zone:'El Poblado', type:'house', guests:16, rooms:7, bathrooms:4, rating:'4.60', price:350, featured:true, jacuzzi:true,
-    img:'https://a0.muscache.com/im/pictures/hosting/Hosting-1187389206846542308/original/f37f08c3-9f4e-41f1-8826-f245e76ea034.png?im_w=1200',
+    img:'/images/properties/s4.jpg',
     airbnb:'https://es-l.airbnb.com/rooms/1187389206846542308',
     desc_en:'Our largest property in Manila — 7 bedrooms, 14 beds, jacuzzi and private basketball court.',
     desc_es:'Nuestra propiedad más grande en Manila — 7 habitaciones, 14 camas, jacuzzi y cancha privada.',
     amenities:['Jacuzzi','Basketball','WiFi','A/C','BBQ','Cocina','14 Camas','Parking'] },
   { id:'s5', name:'Manila 1 — Galería', zone:'El Poblado', type:'apartment', guests:11, rooms:4, bathrooms:3, rating:'4.76', price:230,
-    img:'https://a0.muscache.com/im/pictures/miso/Hosting-995802205246797979/original/c39d37f7-ab6a-4708-9661-6f4d0330c6d5.jpeg?im_w=720',
+    img:'/images/properties/s5.jpg',
     airbnb:'https://es-l.airbnb.com/rooms/995802205246797979',
     desc_en:'Art gallery-inspired apartment in Manila, El Poblado.',
     desc_es:'Apartamento inspirado en galería de arte en Manila, El Poblado.',
     amenities:['WiFi','A/C','Balcón','Arte','Cocina','Vista'] },
   { id:'s6', name:'Manila 3 — Tropical', zone:'El Poblado', type:'apartment', guests:11, rooms:3, bathrooms:2, rating:'4.73', price:230, jacuzzi:true,
-    img:'https://a0.muscache.com/im/pictures/miso/Hosting-921716470981445229/original/8a77104b-c553-4517-8bbe-6e4b49d53467.jpeg?im_w=720',
+    img:'/images/properties/s6.jpg',
     airbnb:'https://es-l.airbnb.com/rooms/921716470981445229',
     desc_en:'Tropical fresh retreat with jacuzzi and BBQ.',
     desc_es:'Retiro tropical fresco con jacuzzi y BBQ.',
     amenities:['Jacuzzi','BBQ','WiFi','A/C','Cocina','Tropical'] },
   { id:'s7', name:'Manila 2 — Nómadas', zone:'El Poblado', type:'apartment', guests:7, rooms:3, bathrooms:2, rating:'4.78', price:160,
-    img:'https://a0.muscache.com/im/pictures/hosting/Hosting-803975683932060019/original/0a93bb5d-1cef-4754-a80c-f9ca8bce4db4.jpeg?im_w=720',
+    img:'/images/properties/s7.jpg',
     airbnb:'https://es-l.airbnb.com/rooms/803975683932060019',
     desc_en:'Comfort, A/C and 577 Mbps WiFi in Manila, El Poblado.',
     desc_es:'Confort, A/C y WiFi de 577 Mbps en Manila, El Poblado.',
     amenities:['577 Mbps WiFi','A/C','Workspace','Cocina','Smart Lock'] },
   { id:'s8', name:'Casa Campestre Rionegro', zone:'Rionegro', type:'farm', guests:10, rooms:3, bathrooms:2, rating:'4.84', price:250, jacuzzi:true,
-    img:'https://a0.muscache.com/im/pictures/hosting/Hosting-1367832882891245476/original/dd71c5f4-30e9-4502-b803-f8a118c89abd.jpeg?im_w=1200',
+    img:'/images/properties/s8.jpg',
     airbnb:'https://es-l.airbnb.com/rooms/1367832882891245476',
     desc_en:'Countryside house with jacuzzi, home cinema, and just 10 min from the airport.',
     desc_es:'Casa campestre con jacuzzi, cine en casa, a 10 min del aeropuerto.',
     amenities:['Jacuzzi','Cine','WiFi','BBQ','Jardín','Vista Montaña','Parking','Cocina'] },
   { id:'s9', name:'Granja Santa Fe', zone:'Santa Fe Antioquia', type:'farm', guests:19, rooms:6, bathrooms:8, price:450, pool:true, jacuzzi:true,
-    img:'https://a0.muscache.com/im/pictures/hosting/Hosting-1361167783206300607/original/08f166b0-ef13-4bc2-8ba0-44d4e461bb1d.jpeg?im_w=1200',
+    img:'/images/properties/s9.jpg',
     airbnb:'https://es-l.airbnb.com/rooms/1361167783206300607',
     desc_en:'Desert farm in Santa Fe de Antioquia with pool and jacuzzi.',
     desc_es:'Granja en Santa Fe de Antioquia con piscina y jacuzzi.',
     amenities:['Piscina','Jacuzzi','WiFi','BBQ','Granja','Naturaleza','Cocina','Hamacas','Parking'] },
   { id:'s10', name:'Loft Premium Bogotá', zone:'Bogotá', type:'apartment', guests:6, rooms:2, bathrooms:2, price:200, featured:true,
-    img:'https://a0.muscache.com/im/pictures/hosting/Hosting-1411339769763131440/original/bd478736-2d45-472b-9283-52beff04e257.jpeg?im_w=720',
+    img:'/images/properties/s10.jpg',
     airbnb:'https://es-l.airbnb.com/rooms/1411339769763131440',
     desc_en:'Exclusive premium loft in Bogotá — modern, spacious, 2 bedrooms.',
     desc_es:'Loft exclusivo premium en Bogotá — moderno, espacioso, 2 habitaciones.',
@@ -2457,6 +2514,13 @@ const monthlyProperties = [
 let lang = 'es';
 let mode = 'short';
 let currentProperty = null;
+let galleryManifest = {};
+fetch('/images/gallery-manifest.json')
+  .then(r => r.ok ? r.json() : {})
+  .then(m => { galleryManifest = m || {}; })
+  .catch(() => {});
+let _galleryFiles = [];
+let _galleryIdx = 0;
 
 const zoneColors = {
   'El Poblado': ['#a0884d', '#5a4a2a'],
@@ -2992,9 +3056,29 @@ function openModal(id) {
   const isShort = mode === 'short';
 
   const imgEl = document.getElementById('modalImg');
-  imgEl.innerHTML = p.img
-    ? `<img src="${p.img}" alt="${p.name}" onerror="this.parentElement.innerHTML='${generatePlaceholder(p.name, p.zone).replace(/'/g, '&#39;')}'">`
-    : generatePlaceholder(p.name, p.zone);
+  const manifestFiles = (galleryManifest[p.id] || []).map(f => `/images/properties/${f}`);
+  const gallery = manifestFiles.length ? manifestFiles : (p.img ? [p.img] : []);
+  _galleryFiles = gallery;
+  _galleryIdx = 0;
+  const placeholderHTML = generatePlaceholder(p.name, p.zone).replace(/'/g, '&#39;');
+  if (!gallery.length) {
+    imgEl.innerHTML = generatePlaceholder(p.name, p.zone);
+  } else {
+    const hero = gallery[0];
+    const hasMore = gallery.length > 1;
+    imgEl.innerHTML = `
+      <div class="modal-gallery">
+        <img id="modalGalleryImg" src="${hero}" alt="${p.name}" onerror="this.closest('.modal-img').innerHTML='${placeholderHTML}'">
+        ${hasMore ? `
+          <button class="modal-gallery-nav prev" onclick="prevGalleryImg()" aria-label="Anterior">‹</button>
+          <button class="modal-gallery-nav next" onclick="nextGalleryImg()" aria-label="Siguiente">›</button>
+          <div class="modal-gallery-counter"><span id="modalGalleryIndex">1</span> / ${gallery.length}</div>
+          <div class="modal-gallery-thumbs">
+            ${gallery.map((f, i) => `<button class="modal-gallery-thumb${i === 0 ? ' active' : ''}" onclick="setGalleryImg(${i})" aria-label="Foto ${i+1}"><img src="${f}" alt="" loading="lazy"></button>`).join('')}
+          </div>
+        ` : ''}
+      </div>`;
+  }
 
   document.getElementById('modalZone').textContent = p.zone;
   document.getElementById('modalName').textContent = p.name;
@@ -3028,6 +3112,25 @@ function closeModal(e) {
   document.body.style.overflow = '';
   currentProperty = null;
 }
+
+
+// === GALLERY NAVIGATION ===
+function setGalleryImg(idx) {
+  if (!_galleryFiles.length) return;
+  _galleryIdx = ((idx % _galleryFiles.length) + _galleryFiles.length) % _galleryFiles.length;
+  const img = document.getElementById('modalGalleryImg');
+  const counter = document.getElementById('modalGalleryIndex');
+  if (img) img.src = _galleryFiles[_galleryIdx];
+  if (counter) counter.textContent = _galleryIdx + 1;
+  document.querySelectorAll('.modal-gallery-thumb').forEach((t, i) => t.classList.toggle('active', i === _galleryIdx));
+}
+function prevGalleryImg() { setGalleryImg(_galleryIdx - 1); }
+function nextGalleryImg() { setGalleryImg(_galleryIdx + 1); }
+document.addEventListener('keydown', (e) => {
+  if (!document.getElementById('modalOverlay').classList.contains('open')) return;
+  if (e.key === 'ArrowLeft') prevGalleryImg();
+  if (e.key === 'ArrowRight') nextGalleryImg();
+});
 
 // === WHATSAPP ===
 function buildWAMessage(propertyName) {
