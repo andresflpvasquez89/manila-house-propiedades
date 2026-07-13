@@ -2452,6 +2452,7 @@ const shortStayProperties = [
   { id:'s12', name:'Villa Épica 11 Hab', zone:'El Poblado', type:'house', guests:16, rooms:11, bathrooms:8.5, price:1300, featured:true, pool:true, jacuzzi:true,
     img:'/images/properties/s12.jpg',
     airbnb:'https://es-l.airbnb.com/rooms/1600193909436950008',
+    pdf:'/brochures/villa-epica-11hab.pdf',
     desc_en:'Epic 11-bedroom villa in El Poblado (Manila). Pool, jacuzzi, neon bar, home cinema, pool table and vast terraces. Sleeps 16, daily cleaning.',
     desc_es:'Villa épica de 11 habitaciones en El Poblado (Manila). Piscina, jacuzzi, bar neón, sala de cine, mesa de pool y amplias terrazas. Para 16 huéspedes, limpieza diaria.',
     amenities:['Piscina','Jacuzzi','Bar Neón','Cine','Mesa de Pool','Terrazas','A/C','BBQ','WiFi','Limpieza Diaria'] }
@@ -3110,6 +3111,7 @@ function openModal(id) {
   const priceValue = isShort ? '$' + p.price.toLocaleString('en-US') + ' USD' : formatPrice(p.price, 'COP') + ' COP';
   details.push({ label: priceLabel, value: priceValue });
   if (p.airbnb) details.push({ label: 'Airbnb', value: `<a href="${p.airbnb}" target="_blank" rel="noopener">${lang === 'es' ? 'Ver →' : 'View →'}</a>` });
+  if (p.pdf) details.push({ label: 'Brochure', value: `<a href="${p.pdf}" target="_blank" rel="noopener">${lang === 'es' ? 'Descargar PDF ↓' : 'Download PDF ↓'}</a>` });
 
   document.getElementById('modalDetails').innerHTML = details
     .map(d => `<div class="detail-item"><div class="detail-label">${d.label}</div><div class="detail-value num">${d.value}</div></div>`).join('');
