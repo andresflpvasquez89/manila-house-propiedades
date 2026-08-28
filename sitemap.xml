@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.manilahouse.co/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image><image:loc>https://www.manilahouse.co/images/properties/s1.jpg</image:loc><image:title>Pink House — mansión de lujo en El Poblado, Medellín</image:title></image:image>
+    <image:image><image:loc>https://www.manilahouse.co/images/properties/s12.jpg</image:loc><image:title>Villa Épica — villa de 11 habitaciones con piscina en El Poblado</image:title></image:image>
+    <image:image><image:loc>https://www.manilahouse.co/images/properties/s14.jpg</image:loc><image:title>Luxury flat frente al mar con piscina infinita en Cartagena</image:title></image:image>
+    <image:image><image:loc>https://www.manilahouse.co/images/properties/s23.jpg</image:loc><image:title>Castillo Blanco — casa con piscina privada cerca al Parque Lleras</image:title></image:image>
+    <image:image><image:loc>https://www.manilahouse.co/images/properties/s25.jpg</image:loc><image:title>Ático de lujo con piscina cubierta en El Poblado, Medellín</image:title></image:image>
+  </url>
+</urlset>
