@@ -3476,7 +3476,11 @@ initCounters();
   }
   v.addEventListener('playing',function(){ v.classList.add('is-playing'); tick(); });
   v.addEventListener('timeupdate',tick);
-  var p=v.play(); if(p&&p.catch) p.catch(function(){});
+  function tryPlay(){ if(v.paused){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); } }
+  tryPlay();
+  v.addEventListener('loadeddata',tryPlay);
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden) tryPlay(); });
+  ['pointerdown','touchstart','keydown','scroll'].forEach(function(ev){ window.addEventListener(ev,tryPlay,{once:true,passive:true}); });
 })();
 </script>
 </body>
