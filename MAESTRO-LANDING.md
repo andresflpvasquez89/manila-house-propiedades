@@ -253,3 +253,10 @@ Cada una: galería de 10 (2560px, hero mejorado con IA), ficha en `CENTRO DE OPE
 
 ---
 *Fin del maestro. Cualquier aprendizaje nuevo va acá, con fecha.*
+
+## HERO EN VIDEO (desde 2026-08-28)
+- La portada es `images/hero/manila-house-hero.mp4` (1920×1080, 24.6 s, 12 propiedades × 2 s, Ken Burns alternado + xfade 0.6 s, sin audio) y `manila-house-hero-720.mp4` para ≤720 px; `poster.jpg` es el respaldo (no-JS, reduced-motion, primer paint).
+- **Sin IA, sin créditos**: se arma con ffmpeg desde los heroes reales. Script: `CENTRO DE OPERACIONES\AGENTES-PROPIEDADES-DEV-hero-video-build.py` (lista `SEQ` = orden y menciones). Para cambiar propiedades: editar `SEQ`, correr, y actualizar el mismo `SEQ` en el `<script>` del final de `index.html` (menciones sincronizadas cada 2 s, tope derecho).
+- El `<video>` no lleva `<source>`: un inline script elige 1080/720 por `innerWidth` antes de cargar (evita doble descarga; Chrome ignora `media` en `<source>` de video).
+- Se eliminó el webp base64 de 250 KB que vivía en el CSS del hero → HTML 422 KB → 173 KB.
+- Lote Alta Gama s29–s36 (2026-08-28): cotizaciones de 3 noches ÷ 3 × 1.15; proveedor en `ALIADOS\PROVEEDORES.xlsx`. Truco para el pase IA de heroes sin transcribir URLs presignadas: publicar primero y usar `media_import_url` desde el sitio en vivo.
