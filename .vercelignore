@@ -1,0 +1,13 @@
+# Documentos internos: jamás se publican en manilahouse.co
+# (antes de 2026-09-29 MAESTRO-LANDING.md era público y exponía la regla de margen)
+AGENTS.md
+MAESTRO-LANDING.md
+README.md
+about.txt
+hero-block.txt
+hero-css.txt
+footer.txt
+render-*.txt
+*.py
+*.bak
+*.backup

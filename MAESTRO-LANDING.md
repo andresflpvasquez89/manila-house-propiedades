@@ -261,3 +261,10 @@ Cada una: galería de 10 (2560px, hero mejorado con IA), ficha en `CENTRO DE OPE
 - Se eliminó el webp base64 de 250 KB que vivía en el CSS del hero → HTML 422 KB → 173 KB.
 - Lote Alta Gama s29–s36 (2026-08-28): cotizaciones de 3 noches ÷ 3 × 1.15; proveedor en `ALIADOS\PROVEEDORES.xlsx`. Truco para el pase IA de heroes sin transcribir URLs presignadas: publicar primero y usar `media_import_url` desde el sitio en vivo.
 - Gotcha de verificación: Chrome **difiere la carga y el autoplay de `<video>` en pestañas ocultas** (`document.visibilityState === 'hidden'`) → readyState 0 y buffer vacío no significan bug; probar en una pestaña visible (el panel del navegador de Claude sirve).
+
+## LOTE s37–s47 Y SEGURIDAD (2026-09-29)
+- 11 villas de reventa de proveedores nuevos (hosts de Airbnb; relación comercial pendiente). Cotización 2 noches (6–8 oct) ÷ 2 × 1.15. Proveedores en `ALIADOS\PROVEEDORES.xlsx`; fichas en `PROPIEDADES\`.
+- **Fuga cerrada:** este archivo era público en manilahouse.co. Ahora `.vercelignore` excluye documentos internos. Regla: nada nuevo en la raíz sin revisar `.vercelignore`.
+- **Brochures s29–s36 corregidos** (decían "hasta 14 huéspedes"). Motor v2 permanente en `CENTRO DE OPERACIONES\AGENTES-PROPIEDADES-DEV-brochure-engine.py`.
+- `AGENTS.md` creado (protocolo Claude construye · Codex audita).
+

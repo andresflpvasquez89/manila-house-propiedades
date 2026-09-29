@@ -1877,6 +1877,15 @@ a { color: inherit; text-decoration: none; }
   gap: 6px;
   margin-bottom: 28px;
 }
+.amenity-ref {
+  align-self: center;
+  font-size: 11px;
+  color: var(--ink-soft);
+  opacity: .45;
+  text-decoration: none;
+  padding: 8px 6px;
+}
+.amenity-ref:hover { opacity: .8; }
 .amenity-tag {
   font-size: 12px;
   font-weight: 500;
@@ -2516,120 +2525,103 @@ const shortStayProperties = [
     amenities:['Piscina Climatizada','Jacuzzi','Sauna','Turco','Cine','Discoteca','Bar Privado','BBQ','A/C'] },
   { id:'s12', name:'Villa Épica 11 Hab', zone:'El Poblado', type:'house', guests:16, beds:13, rooms:11, bathrooms:8.5, price:1375, featured:true, pool:true, jacuzzi:true,
     img:'/images/properties/s12.jpg',
-    airbnb:'https://es-l.airbnb.com/rooms/1600193909436950008',
-    pdf:'/brochures/villa-epica-11hab.pdf',
+    airbnb:'https://es-l.airbnb.com/rooms/1600193909436950008', pdf:'/brochures/villa-epica-11hab.pdf',
     desc_en:'Epic 11-bedroom villa in El Poblado (Manila). Pool, jacuzzi, neon bar, home cinema, pool table and vast terraces. Sleeps 16, daily cleaning.',
     desc_es:'Villa épica de 11 habitaciones en El Poblado (Manila). Piscina, jacuzzi, bar neón, sala de cine, mesa de pool y amplias terrazas. Para 16 huéspedes, limpieza diaria.',
     amenities:['Piscina','Jacuzzi','Bar Neón','Cine','Mesa de Pool','Terrazas','A/C','BBQ','WiFi','Limpieza Diaria'] },
   { id:'s13', name:'Casa Provenza — Piscina & Jacuzzi', zone:'El Poblado', type:'house', guests:14, beds:7, rooms:7, bathrooms:9, price:1075, featured:true, pool:true, jacuzzi:true,
     img:'/images/properties/s13.jpg',
-    airbnb:'https://es-l.airbnb.com/rooms/1182986232285399167',
-    pdf:'/brochures/casa-provenza.pdf',
+    airbnb:'https://es-l.airbnb.com/rooms/1182986232285399167', pdf:'/brochures/casa-provenza.pdf',
     desc_en:'Design house minutes from Provenza, El Poblado: pool with sun beds, jacuzzi, outdoor bar and hammock kiosk. 7 bedrooms sleeping 14.',
     desc_es:'Casa de diseño a minutos de Provenza, El Poblado: piscina con camas de sol, jacuzzi, bar exterior y kiosco con hamaca. 7 habitaciones para 14 huéspedes.',
     amenities:['Piscina','Jacuzzi','Bar Exterior','Camas de Sol','Kiosco Hamaca','Cocina Abierta','A/C','WiFi'] },
   { id:'s14', name:'Luxury Flat Frente al Mar', zone:'Cartagena', type:'apartment', guests:8, beds:5, rooms:3, bathrooms:2.5, price:325, featured:true, pool:true, jacuzzi:true,
     img:'/images/properties/s14.jpg',
-    airbnb:'https://es-l.airbnb.com/rooms/1390143833982302546',
-    pdf:'/brochures/luxury-flat-cartagena.pdf',
+    airbnb:'https://es-l.airbnb.com/rooms/1390143833982302546', pdf:'/brochures/luxury-flat-cartagena.pdf',
     desc_en:'Beachfront luxury flat in Cartagena with rooftop infinity pool, jacuzzi and sea-view balcony. 3 bedrooms sleeping 8.',
     desc_es:'Apartamento de lujo frente al mar en Cartagena con piscina infinita en la azotea, jacuzzi y balcón con vista al mar. 3 habitaciones para 8 huéspedes.',
     amenities:['Piscina Infinita','Frente al Mar','Jacuzzi','Sauna','Balcón Vista Mar','Cocina Completa','A/C','WiFi'] },
   { id:'s15', name:'Glamping de Lujo — Bosque & Malla', zone:'Santa Fe Antioquia', type:'farm', guests:5, beds:2, rooms:2, bathrooms:1, price:215, featured:true, jacuzzi:true,
     img:'/images/properties/s15.jpg',
-    airbnb:'https://es-l.airbnb.com/rooms/1545742144849614709',
-    pdf:'/brochures/glamping-bosque-malla.pdf',
+    airbnb:'https://es-l.airbnb.com/rooms/1545742144849614709', pdf:'/brochures/glamping-bosque-malla.pdf',
     desc_en:'Luxury glamping hanging over the forest in the Santa Fe corridor: heated jacuzzi, net over the trees and full forest views. Sleeps 5.',
     desc_es:'Glamping de lujo colgado del bosque en el corredor de Santa Fe: jacuzzi climatizado, malla sobre los árboles y vista total al bosque. Para 5 huéspedes.',
     amenities:['Jacuzzi Climatizado','Malla sobre el Bosque','Vista al Bosque','WiFi','Parrilla','Cocina','Pet Friendly'] },
   { id:'s16', name:'Finca Villa Cavil', zone:'Santa Fe Antioquia', type:'farm', guests:16, beds:9, rooms:3, bathrooms:2.5, price:335, featured:true, pool:true, jacuzzi:true,
     img:'/images/properties/s16.jpg',
-    airbnb:'https://es-l.airbnb.com/rooms/861547534365310838',
-    pdf:'/brochures/finca-villa-cavil.pdf',
+    airbnb:'https://es-l.airbnb.com/rooms/861547534365310838', pdf:'/brochures/finca-villa-cavil.pdf',
     desc_en:'Modern finca 50 min from Medellín: sunset pool, jacuzzi under a wooden pergola and double-height living room. 3 bedrooms, 9 beds for 16 guests.',
     desc_es:'Finca moderna a 50 min de Medellín: piscina con atardeceres, jacuzzi bajo pérgola de madera y sala de doble altura. 3 habitaciones, 9 camas para 16 huéspedes.',
     amenities:['Piscina','Jacuzzi','Vista Montañas','Hamacas','WiFi','Parrilla','Ventiladores','Pet Friendly'] },
   { id:'s17', name:'Glamping Cascada Privada', zone:'Santa Fe Antioquia', type:'farm', guests:8, beds:4, rooms:1, bathrooms:1, price:235, jacuzzi:true,
     img:'/images/properties/s17.jpg',
-    airbnb:'https://es-l.airbnb.com/rooms/1054543461354985025',
-    pdf:'/brochures/glamping-cascada.pdf',
+    airbnb:'https://es-l.airbnb.com/rooms/1054543461354985025', pdf:'/brochures/glamping-cascada.pdf',
     desc_en:'Boutique glamping with private waterfall jacuzzi and rain shower. Sleeps 8 in the Santa Fe corridor.',
     desc_es:'Glamping boutique con jacuzzi de cascada privada y ducha lluvia. Hasta 8 huéspedes en el corredor de Santa Fe.',
     amenities:['Jacuzzi Cascada','Ducha Lluvia','Terraza con Vista','WiFi','Parrilla','Pet Friendly'] },
   { id:'s18', name:'Finca Villa Cerat', zone:'Santa Fe Antioquia', type:'farm', guests:12, beds:10, rooms:3, bathrooms:3.5, price:305, featured:true, pool:true,
     img:'/images/properties/s18.jpg',
-    airbnb:'https://es-l.airbnb.com/rooms/1092739807194826048',
-    pdf:'/brochures/finca-villa-cerat.pdf',
+    airbnb:'https://es-l.airbnb.com/rooms/1092739807194826048', pdf:'/brochures/finca-villa-cerat.pdf',
     desc_en:'Modern-architecture finca in the Santa Fe corridor: pool, floor-to-ceiling windows and mountain views. 3 bedrooms, 10 beds for 12 guests. Pet friendly.',
     desc_es:'Finca de arquitectura moderna en el corredor de Santa Fe: piscina, ventanales de piso a techo y vista a las montañas. 3 habitaciones, 10 camas para 12 huéspedes. Pet friendly.',
     amenities:['Piscina','A/C','Vista Montañas','Ventanales','Parrilla','WiFi','Pet Friendly'] },
   { id:'s19', name:'Glamping El Bosque', zone:'Santa Fe Antioquia', type:'farm', guests:3, beds:2, rooms:1, bathrooms:1, price:215, jacuzzi:true,
     img:'/images/properties/s19.jpg',
-    airbnb:'https://es-l.airbnb.com/rooms/1548842600981019865',
-    pdf:'/brochures/glamping-el-bosque.pdf',
+    airbnb:'https://es-l.airbnb.com/rooms/1548842600981019865', pdf:'/brochures/glamping-el-bosque.pdf',
     desc_en:'Mirror jacuzzi among the trees, net, hanging chair and movie projector. Romantic escape for 3.',
     desc_es:'Jacuzzi-espejo entre los árboles, malla, silla colgante y proyector de cine. Escapada romántica para 3.',
     amenities:['Jacuzzi Climatizado','Malla','Cine Proyector','Vista al Bosque','WiFi','Parrilla'] },
   { id:'s20', name:'Glamping A-Frame de Lujo', zone:'Santa Fe Antioquia', type:'farm', guests:6, beds:3, rooms:2, bathrooms:1, price:215, jacuzzi:true,
     img:'/images/properties/s20.jpg',
-    airbnb:'https://es-l.airbnb.com/rooms/1722080866542031010',
-    pdf:'/brochures/glamping-aframe.pdf',
+    airbnb:'https://es-l.airbnb.com/rooms/1722080866542031010', pdf:'/brochures/glamping-aframe.pdf',
     desc_en:'Luxury A-frame tent with waterfall jacuzzi under the trees and glass roof. 2 spaces sleeping 6.',
     desc_es:'Carpa A-frame de lujo con jacuzzi de cascada bajo los árboles y techo de vidrio. 2 ambientes para 6 huéspedes.',
     amenities:['Jacuzzi Cascada','Techo de Vidrio','Comedor en Terraza','WiFi','Cocina','Pet Friendly'] },
   { id:'s21', name:'Villa los Pinos', zone:'Santa Fe Antioquia', type:'house', guests:12, beds:8, rooms:4, bathrooms:3, price:315, featured:true, pool:true,
     img:'/images/properties/s21.jpg',
-    airbnb:'https://es-l.airbnb.com/rooms/1722744585792285337',
-    pdf:'/brochures/villa-los-pinos.pdf',
+    airbnb:'https://es-l.airbnb.com/rooms/1722744585792285337', pdf:'/brochures/villa-los-pinos.pdf',
     desc_en:'Modern villa with waterfall pool, mountain views and open kitchen. 4 bedrooms, 8 beds for 12 guests.',
     desc_es:'Villa moderna con piscina de cascada, vista a las montañas y cocina abierta. 4 habitaciones, 8 camas para 12 huéspedes.',
     amenities:['Piscina Cascada','Vista Montañas','Ventiladores','Cocina Abierta','WiFi','Parrilla','Pet Friendly'] },
   { id:'s22', name:'Estudio Vista Ciudad', zone:'Medellín', type:'apartment', guests:2, rooms:1, beds:1, bathrooms:1, price:40,
     img:'/images/properties/s22.jpg',
-    airbnb:'https://es-l.airbnb.com/rooms/897673950817889709',
-    pdf:'/brochures/estudio-vista-ciudad.pdf',
+    airbnb:'https://es-l.airbnb.com/rooms/897673950817889709', pdf:'/brochures/estudio-vista-ciudad.pdf',
     desc_en:'Cozy studio for 2 in a local Medellín neighborhood with a beautiful city-skyline view, A/C and private entrance. Pets welcome.',
     desc_es:'Acogedor estudio para 2 en un barrio local de Medellín, con hermosa vista al horizonte de la ciudad, A/C y entrada independiente. Admite mascotas.',
     amenities:['Vista Ciudad','A/C','WiFi','Cocina','Lavadora','Agua Caliente','Entrada Independiente','Pet Friendly'] },
   { id:'s23', name:'Castillo Blanco — Poblado', zone:'El Poblado', type:'house', guests:16, rooms:10, beds:16, bathrooms:8, price:1385, featured:true, pool:true, jacuzzi:true,
     img:'/images/properties/s23.jpg',
-    airbnb:'https://es-l.airbnb.com/rooms/1068060900429530209',
-    pdf:'/brochures/castillo-blanco.pdf',
+    airbnb:'https://es-l.airbnb.com/rooms/1068060900429530209', pdf:'/brochures/castillo-blanco.pdf',
     desc_en:'Modern white-castle house in El Poblado, 5 minutes from Lleras Park: private pool, jacuzzi and private gym. 10 bedrooms for 16 guests.',
     desc_es:'Casa moderna tipo castillo blanco en El Poblado, a 5 minutos del Parque Lleras: piscina privada, jacuzzi y gimnasio propio. 10 habitaciones para 16 huéspedes.',
     amenities:['Piscina Privada','Jacuzzi','A/C','Gimnasio','Mesa de Billar','Parrilla','WiFi','Parqueadero','Pet Friendly'] },
   { id:'s24', name:'Casa Blanca — 15 Habitaciones', zone:'Medellín', type:'house', guests:16, rooms:15, beds:16, bathrooms:14, price:1345, featured:true, pool:true, jacuzzi:true,
     img:'/images/properties/s24.jpg',
-    airbnb:'https://es-l.airbnb.com/rooms/1068074566711009325',
-    pdf:'/brochures/casa-blanca.pdf',
+    airbnb:'https://es-l.airbnb.com/rooms/1068074566711009325', pdf:'/brochures/casa-blanca.pdf',
     desc_en:'15-bedroom, 14-bath house for 16 guests with a 24-hour pool, jacuzzi, pool table and BBQ. Space, privacy and social areas galore.',
     desc_es:'Casa de 15 habitaciones y 14 baños para 16 huéspedes, con piscina 24 horas, jacuzzi, mesa de billar y parrilla. Espacio y zonas sociales de sobra.',
     amenities:['Piscina 24h','Jacuzzi','A/C','Mesa de Billar','Parrilla BBQ','Cocina Equipada','WiFi','Parqueadero','Pet Friendly'] },
   { id:'s25', name:'Ático de Lujo — Poblado', zone:'El Poblado', type:'apartment', guests:12, rooms:6, beds:11, bathrooms:6, price:1520, featured:true, pool:true, jacuzzi:true,
     img:'/images/properties/s25.jpg',
-    airbnb:'https://es-l.airbnb.com/rooms/1068120297172307596',
-    pdf:'/brochures/atico-lujo-poblado.pdf',
+    airbnb:'https://es-l.airbnb.com/rooms/1068120297172307596', pdf:'/brochures/atico-lujo-poblado.pdf',
     desc_en:'Luxury penthouse in El Poblado for 12: private indoor pool, jacuzzi, sauna, private gym and a billiards room overlooking the city.',
     desc_es:'Ático de lujo en El Poblado para 12: piscina cubierta privada, jacuzzi, sauna, gimnasio propio y sala de billar con vista a la ciudad.',
     amenities:['Piscina Cubierta','Jacuzzi','Sauna','Gimnasio','Mesa de Billar','A/C','WiFi','Ascensor','Pet Friendly'] },
   { id:'s26', name:'Lombardia Luxury', zone:'Medellín', type:'house', guests:12, rooms:6, beds:9, bathrooms:6, price:935, pool:true, jacuzzi:true,
     img:'/images/properties/s26.jpg',
-    airbnb:'https://es-l.airbnb.com/rooms/1068956208461719416',
-    pdf:'/brochures/lombardia-luxury.pdf',
+    airbnb:'https://es-l.airbnb.com/rooms/1068956208461719416', pdf:'/brochures/lombardia-luxury.pdf',
     desc_en:'Luxury house in Medellín for 12 guests: covered private pool open 24h, jacuzzi and gym. A/C, full kitchen, BBQ and free parking.',
     desc_es:'Casa de lujo en Medellín para 12 huéspedes: piscina privada cubierta 24h, jacuzzi y gimnasio. A/C, cocina completa, parrilla y parqueadero.',
     amenities:['Piscina Privada 24h','Jacuzzi','A/C','Gimnasio','Cocina Completa','Parrilla','WiFi','Parqueadero','Pet Friendly'] },
   { id:'s27', name:'Mansión Club — Poblado', zone:'El Poblado', type:'house', guests:16, rooms:11, beds:19, bathrooms:8, price:1050, featured:true, pool:true, jacuzzi:true,
     img:'/images/properties/s27.jpg',
-    airbnb:'https://es-l.airbnb.com/rooms/1068236190871703181',
-    pdf:'/brochures/mansion-club-poblado.pdf',
+    airbnb:'https://es-l.airbnb.com/rooms/1068236190871703181', pdf:'/brochures/mansion-club-poblado.pdf',
     desc_en:'El Poblado mansion for 16 guests: indoor pool, jacuzzi, billiards and a private club with event hall. 11 bedrooms, 19 beds and 8 baths.',
     desc_es:'Mansión en El Poblado para 16 huéspedes: piscina cubierta, jacuzzi, billar y club privado con salón de eventos. 11 habitaciones, 19 camas y 8 baños.',
     amenities:['Piscina Cubierta','Jacuzzi','Club Privado','Salón de Eventos','Mesa de Billar','A/C','Cocina Completa','Parrilla','WiFi','Pet Friendly'] },
   { id:'s28', name:'Villa Sauna — Piscina Climatizada', zone:'Medellín', type:'house', guests:14, rooms:5, beds:9, bathrooms:5, price:885, featured:true, pool:true, jacuzzi:true,
     img:'/images/properties/s28.jpg',
-    airbnb:'https://es-l.airbnb.com/rooms/1653932004320714832',
-    pdf:'/brochures/villa-sauna-medellin.pdf',
+    airbnb:'https://es-l.airbnb.com/rooms/1653932004320714832', pdf:'/brochures/villa-sauna-medellin.pdf',
     desc_en:'Luxury villa in Medellín for 14 guests: 5 en-suite bedrooms, heated pool with jacuzzi, outdoor bar and private sauna surrounded by gardens. 3-night minimum stay.',
     desc_es:'Villa de lujo en Medellín para 14 huéspedes: 5 habitaciones con baño privado, piscina climatizada con jacuzzi, bar exterior y sauna privado entre jardines. Estadía mínima 3 noches.',
     amenities:['Piscina Climatizada','Jacuzzi','Bar Exterior','Sauna Privado','A/C','Parrilla','Cocina','WiFi','Pet Friendly'] },
@@ -2672,7 +2664,62 @@ const shortStayProperties = [
     img:'/images/properties/s36.jpg', airbnb:'https://es-l.airbnb.com/rooms/51304615', pdf:'/brochures/sopetran-colonial.pdf',
     desc_en:'Colonial estate in the warm west of Antioquia, minutes from Santa Fe: marble pool with fountains and jacuzzi, social kiosks, BBQ and pool table. 22 beds for 16 guests. 3-night minimum.',
     desc_es:'Finca colonial en el Occidente antioqueño, a minutos de Santa Fe: piscina de mármol con fuentes y jacuzzi, kioscos sociales, BBQ y billar. 22 camas para 16 huéspedes. Mínimo 3 noches.',
-    amenities:['Piscina de Mármol','Jacuzzi','Mesa de Billar','BBQ Carbón','Fogata','Kioscos Sociales','A/C','Hamaca','Pet Friendly'] }
+    amenities:['Piscina de Mármol','Jacuzzi','Mesa de Billar','BBQ Carbón','Fogata','Kioscos Sociales','A/C','Hamaca','Pet Friendly'] },
+  { id:'s37', name:'Villa Club — Envigado', zone:'Envigado', type:'house', guests:16, rooms:8, beds:13, bathrooms:9, price:1215, featured:true, pool:true, jacuzzi:true,
+    img:'/images/properties/s37.jpg', airbnb:'https://es-l.airbnb.com/rooms/1592315320707683762', pdf:'/brochures/villa-club-envigado.pdf',
+    desc_en:'Modern villa in the Envigado hills, 15 minutes from Provenza: heated spa-style pool with jacuzzi, private nightclub, sunken fire pit and valley views. Sleeps 16.',
+    desc_es:'Villa moderna en las colinas de Envigado, a 15 minutos de Provenza: piscina climatizada tipo spa con jacuzzi, discoteca privada, fogata hundida y vista al valle. Para 16 huéspedes.',
+    amenities:['Piscina Climatizada','Jacuzzi','Discoteca Privada','Fogata','BBQ','Vista al Valle','A/C','WiFi','Parqueadero'] },
+  { id:'s38', name:'Casa Alba — Las Palmas', zone:'Medellín', type:'house', guests:12, rooms:4, beds:6, bathrooms:4.5, price:925, pool:true, jacuzzi:true,
+    img:'/images/properties/s38.jpg', airbnb:'https://es-l.airbnb.com/rooms/903565529664202729', pdf:'/brochures/casa-alba.pdf',
+    desc_en:'Luxury villa in a gated community off Las Palmas: heated private pool, jacuzzi and fire pit overlooking the city and mountains, electric fireplace and outdoor grill. Sleeps 12.',
+    desc_es:'Villa de lujo en condominio cerrado de Las Palmas: piscina privada climatizada, jacuzzi y fogata con vista a la ciudad y las montañas, chimenea eléctrica y cocina exterior. Para 12 huéspedes.',
+    amenities:['Piscina Climatizada','Jacuzzi','Vista Ciudad','Fogata','Chimenea','A/C','BBQ','WiFi','Parqueadero'] },
+  { id:'s39', name:'Villa Ecológica — Las Palmas', zone:'Medellín', type:'house', guests:6, rooms:2, beds:4, bathrooms:3, price:605, pool:false, jacuzzi:true,
+    img:'/images/properties/s39.jpg', airbnb:'https://es-l.airbnb.com/rooms/1272616489873699117', pdf:'/brochures/villa-ecologica-las-palmas.pdf',
+    desc_en:'Eco-luxury villa among the trees of Las Palmas: jacuzzi deck with city views, indoor fireplace, outdoor kitchen, fire pit and hammock. Sleeps 6.',
+    desc_es:'Villa ecológica de lujo entre los árboles de Las Palmas: jacuzzi con vista a la ciudad, chimenea interior, cocina al aire libre, fogata y hamaca. Para 6 huéspedes.',
+    amenities:['Jacuzzi','Vista Ciudad','Chimenea','Cocina Exterior','Fogata','Hamaca','WiFi','Pet Friendly'] },
+  { id:'s40', name:'Villa Vista Envigado — 7 Hab', zone:'Envigado', type:'house', guests:16, rooms:7, beds:13, bathrooms:4.5, price:1375, pool:true, jacuzzi:false,
+    img:'/images/properties/s40.jpg', airbnb:'https://es-l.airbnb.com/rooms/1281079213215674888', pdf:'/brochures/villa-vista-envigado-7hab.pdf',
+    desc_en:'7-bedroom villa in Envigado with a 24/7 private pool and city views, pool table, ping pong, football pitch, wood fireplace and BBQ. Sleeps 16.',
+    desc_es:'Villa de 7 habitaciones en Envigado con piscina privada 24/7 y vista a la ciudad, billar, ping pong, cancha de fútbol, chimenea de leña y BBQ. Para 16 huéspedes.',
+    amenities:['Piscina Privada','Vista Ciudad','Mesa de Billar','Ping Pong','Cancha de Fútbol','Chimenea de Leña','BBQ','WiFi','Pet Friendly'] },
+  { id:'s41', name:'Villa 8 Suites — Envigado', zone:'Envigado', type:'house', guests:16, rooms:8, beds:13, bathrooms:8, price:1225, pool:true, jacuzzi:true,
+    img:'/images/properties/s41.jpg', airbnb:'https://es-l.airbnb.com/rooms/1315594178717096813', pdf:'/brochures/villa-8-suites-envigado.pdf',
+    desc_en:'8-bedroom villa near Provenza: private pool, jacuzzi and sauna, pool table, indoor fireplace and city-and-mountain views. Sleeps 16.',
+    desc_es:'Villa de 8 habitaciones cerca de Provenza: piscina, jacuzzi y sauna privados, mesa de billar, chimenea y vista a la ciudad y las montañas. Para 16 huéspedes.',
+    amenities:['Piscina Privada','Jacuzzi','Sauna','Mesa de Billar','Chimenea','A/C','BBQ','Vista Ciudad','Parqueadero'] },
+  { id:'s42', name:'Casa Selva Oasis', zone:'El Poblado', type:'house', guests:12, rooms:6, beds:6, bathrooms:6.5, price:805, pool:true, jacuzzi:true,
+    img:'/images/properties/s42.jpg', airbnb:'https://es-l.airbnb.com/rooms/1100847681766037504', pdf:'/brochures/casa-selva-oasis.pdf',
+    desc_en:'Tropical luxury house in El Poblado: heated private pool and jacuzzi, pool table and ping pong, outdoor kitchen and 6 bedrooms among the greenery. Sleeps 12.',
+    desc_es:'Casa tropical de lujo en El Poblado: piscina privada climatizada y jacuzzi, billar y ping pong, cocina exterior y 6 habitaciones entre la vegetación. Para 12 huéspedes.',
+    amenities:['Piscina Climatizada','Jacuzzi','A/C','Billar y Ping Pong','Cocina','BBQ','WiFi','Parqueadero x3'] },
+  { id:'s43', name:'Sky-Level Poblado', zone:'El Poblado', type:'apartment', guests:8, rooms:4, beds:4, bathrooms:4.5, price:555, pool:true, jacuzzi:true,
+    img:'/images/properties/s43.jpg', airbnb:'https://es-l.airbnb.com/rooms/1599464296570700233', pdf:'/brochures/sky-level-poblado.pdf',
+    desc_en:'Duplex of about 231 m2 in El Poblado with a private jacuzzi and BBQ terrace over the city; building pool, gym and sauna. Sleeps 8.',
+    desc_es:'Dúplex de unos 231 m2 en El Poblado con jacuzzi privado y terraza BBQ sobre la ciudad; piscina, gimnasio y sauna del edificio. Para 8 huéspedes.',
+    amenities:['Jacuzzi Privado','Terraza BBQ','A/C','WiFi','Cocina','Piscina del Edificio','Gimnasio y Sauna del Edificio','Parqueadero'] },
+  { id:'s44', name:'Villa Envigado — Piscina Cubierta', zone:'Envigado', type:'house', guests:16, rooms:6, beds:11, bathrooms:5.5, price:555, pool:true, jacuzzi:true,
+    img:'/images/properties/s44.jpg', airbnb:'https://es-l.airbnb.com/rooms/961806024009439489', pdf:'/brochures/villa-piscina-cubierta-envigado.pdf',
+    desc_en:'Villa 11 minutes from Provenza: covered private pool, jacuzzi and sauna, pool table, ping pong and a game room with console and arcade. Sleeps 16.',
+    desc_es:'Villa a 11 minutos de Provenza: piscina cubierta privada, jacuzzi y sauna, billar, ping pong y sala de juegos con consola y arcade. Para 16 huéspedes.',
+    amenities:['Piscina Cubierta','Jacuzzi','Sauna','Billar y Ping Pong','Sala de Juegos','A/C','BBQ + Fogata','Parqueadero','WiFi'] },
+  { id:'s45', name:'La Mansión de las Mariposas', zone:'Envigado', type:'house', guests:12, rooms:10, beds:10, bathrooms:9, price:875, featured:true, pool:true, jacuzzi:true,
+    img:'/images/properties/s45.jpg', airbnb:'https://es-l.airbnb.com/rooms/714711918568769293', pdf:'/brochures/mansion-mariposas.pdf',
+    desc_en:'10-bedroom mansion in Envigado: private pool, jacuzzi, sauna and gym, pool table, cinema room and a nightclub area, with panoramic city views. Sleeps 12.',
+    desc_es:'Mansión de 10 habitaciones en Envigado: piscina, jacuzzi, sauna y gimnasio privados, billar, sala de cine y área de discoteca, con vista panorámica a la ciudad. Para 12 huéspedes.',
+    amenities:['Piscina Privada','Jacuzzi','Sauna','Gimnasio','Área de Discoteca','Mesa de Billar','Sala de Cine','Vista Ciudad','Pet Friendly'] },
+  { id:'s46', name:'Villa Poblado — Bar Privado', zone:'El Poblado', type:'house', guests:12, rooms:6, beds:6, bathrooms:6, price:1190, pool:true, jacuzzi:true,
+    img:'/images/properties/s46.jpg', airbnb:'https://es-l.airbnb.com/rooms/1314573463744854413', pdf:'/brochures/villa-poblado-bar.pdf',
+    desc_en:'Villa near Provenza with a heated infinity pool, jacuzzi, private bar with sound system, BBQ and fire pit in a closed private garden. Sleeps 12.',
+    desc_es:'Villa cerca de Provenza con piscina infinita climatizada, jacuzzi, bar privado con sonido, BBQ y fogata en jardín privado cerrado. Para 12 huéspedes.',
+    amenities:['Piscina Infinita Climatizada','Jacuzzi','Bar con Sonido','BBQ + Fogata','A/C','WiFi','Parqueadero x5','Jardín Privado','Pet Friendly'] },
+  { id:'s47', name:'Villa Bienestar — Wellness', zone:'Medellín', type:'house', guests:16, rooms:8, beds:13, bathrooms:9, price:1605, featured:true, pool:true, jacuzzi:true,
+    img:'/images/properties/s47.jpg', airbnb:'https://es-l.airbnb.com/rooms/1760173559687862293', pdf:'/brochures/villa-bienestar.pdf',
+    desc_en:'Wellness villa in Medellín: pool, jacuzzi, private sauna and cold plunge, fire pit and outdoor kitchen with gas grill. 8 bedrooms for 16 guests. Not suitable for children.',
+    desc_es:'Villa de bienestar en Medellín: piscina, jacuzzi, sauna privado y piscina de inmersión fría, fogata y cocina exterior con parrilla. 8 habitaciones para 16 huéspedes. No apto para niños.',
+    amenities:['Piscina','Jacuzzi','Sauna','Cold Plunge','Fogata','BBQ a Gas','A/C','WiFi','Parqueadero'] }
 ];
 
 // === MONTHLY RENTALS (COP/month) — Las 60 del PDF ===
@@ -3189,7 +3236,7 @@ function renderCollection() {
       <div class="prop-card" onclick="openModal('${p.id}')" style="animation-delay:${animDelay}ms">
         <div class="prop-img">
           ${p.img
-            ? `<img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='${generatePlaceholder(p.name, p.zone).replace(/'/g, "&#39;").replace(/"/g, "&quot;")}'">`
+            ? `<img src="${p.img}" alt="${p.name}" loading="lazy">`
             : generatePlaceholder(p.name, p.zone)}
           <div class="prop-badges">${badges.join('')}</div>
           <button class="prop-fav" onclick="event.stopPropagation();this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'♥':'♡'" aria-label="Favorite">♡</button>
@@ -3209,6 +3256,14 @@ function renderCollection() {
       </div>
     `;
   }).join('');
+
+  // Foto rota → placeholder. Listener en vez de onerror inline: el HTML del
+  // placeholder (comillas, saltos de línea) no cabe en un string dentro de un atributo.
+  grid.querySelectorAll('.prop-card').forEach((card, i) => {
+    const img = card.querySelector('.prop-img > img');
+    const p = visible[i];
+    if (img) img.addEventListener('error', () => { img.outerHTML = generatePlaceholder(p.name, p.zone); }, { once: true });
+  });
 }
 
 // === FILTERS ===
@@ -3291,7 +3346,6 @@ function openModal(id) {
   const gallery = manifestFiles.length ? manifestFiles : (p.img ? [p.img] : []);
   _galleryFiles = gallery;
   _galleryIdx = 0;
-  const placeholderHTML = generatePlaceholder(p.name, p.zone).replace(/'/g, '&#39;');
   if (!gallery.length) {
     imgEl.innerHTML = generatePlaceholder(p.name, p.zone);
   } else {
@@ -3299,7 +3353,7 @@ function openModal(id) {
     const hasMore = gallery.length > 1;
     imgEl.innerHTML = `
       <div class="modal-gallery">
-        <img id="modalGalleryImg" src="${hero}" alt="${p.name}" onerror="this.closest('.modal-img').innerHTML='${placeholderHTML}'">
+        <img id="modalGalleryImg" src="${hero}" alt="${p.name}">
         ${hasMore ? `
           <button class="modal-gallery-nav prev" onclick="prevGalleryImg()" aria-label="Anterior">‹</button>
           <button class="modal-gallery-nav next" onclick="nextGalleryImg()" aria-label="Siguiente">›</button>
@@ -3309,6 +3363,12 @@ function openModal(id) {
           </div>
         ` : ''}
       </div>`;
+    // Foto rota → placeholder (mismo motivo que en renderCollection: nada de onerror inline).
+    // isConnected: si el error llega tarde, con otra propiedad ya abierta, no se toca el modal.
+    const galleryImg = document.getElementById('modalGalleryImg');
+    galleryImg.addEventListener('error', () => {
+      if (galleryImg.isConnected) imgEl.innerHTML = generatePlaceholder(p.name, p.zone);
+    }, { once: true });
   }
 
   document.getElementById('modalZone').textContent = p.zone;
@@ -3316,8 +3376,10 @@ function openModal(id) {
   const desc = isShort ? (lang === 'es' ? p.desc_es : p.desc_en) : p.desc;
   document.getElementById('modalDesc').textContent = desc || '';
 
+  // Enlace discreto al listing (solo para uso interno de Andrés; decisión 2026-09-29): sin la palabra "Airbnb".
   document.getElementById('modalAmenities').innerHTML = (p.amenities || [])
-    .map(a => `<span class="amenity-tag">${a}</span>`).join('');
+    .map(a => `<span class="amenity-tag">${a}</span>`).join('')
+    + (p.airbnb ? `<a class="amenity-ref" href="${p.airbnb}" target="_blank" rel="noopener noreferrer nofollow">${lang === 'es' ? 'ver' : 'view'}</a>` : '');
 
   const details = [];
   if (isShort && p.guests) details.push({ label: i18n[lang].label_guests, value: p.guests });
@@ -3330,7 +3392,6 @@ function openModal(id) {
   const priceLabel = isShort ? i18n[lang].label_price_short : i18n[lang].label_price_monthly;
   const priceValue = isShort ? '$' + p.price.toLocaleString('en-US') + ' USD' : formatPrice(p.price, 'COP') + ' COP';
   details.push({ label: priceLabel, value: priceValue });
-  if (p.airbnb) details.push({ label: 'Airbnb', value: `<a href="${p.airbnb}" target="_blank" rel="noopener">${lang === 'es' ? 'Ver →' : 'View →'}</a>` });
   if (p.pdf) details.push({ label: 'Brochure', value: `<a href="${p.pdf}" target="_blank" rel="noopener">${lang === 'es' ? 'Descargar PDF ↓' : 'Download PDF ↓'}</a>` });
 
   document.getElementById('modalDetails').innerHTML = details
