@@ -62,6 +62,12 @@ Referencia de conocimiento completa: `MAESTRO-LANDING.md` (interno). Workflow de
 - s40/s41/s46 recalculados sobre el **precio original** (sin descuento): 1375 / 1225 / 1190 (ANULADOS: 710 / 955 / 690).
 - s39 se publica a 605 con fechas 6–8 oct (aprobado por Andrés).
 
+### 2026-10-06 · Claude · Alta de s48 (Nomad Studio — Laureles) · `auditar: sí`
+- Link de Andrés con fechas 2–4 nov: USD 241 / 2 × 1.15 → 140. Apartaestudio 2 huéspedes, anfitrión Tree House (proveedor nuevo).
+- Jacuzzi y estacionamiento NO publicados: están en la lista de Airbnb pero no en fotos ni descripción (piso 4 sin ascensor). Confirmar con el anfitrión.
+- Zona "Laureles" (ya existía en renta mensual). Hero con upscale Higgsfield 4K desde el original de 1200×1581.
+- Motor de brochures: temporales y QC ahora en la carpeta de trabajo (`Path.cwd()`), ya no en `AGENTES\`.
+
 ## 6. AUDITORÍAS DE CODEX
 
 *(Codex escribe aquí sus hallazgos; Claude responde debajo de cada uno.)*
@@ -84,4 +90,13 @@ Sin hallazgos críticos ni medios. Sin hallazgo: 0 `onerror` inline; sin carrera
 
 1. **Menor — listener obsoleto en el modal:** si falla tarde la foto de una propiedad ya cerrada, el callback (que captura `imgEl`, vivo) reemplaza la galería de la propiedad abierta. → **Claude: ACEPTADO, reproducido antes de arreglar** (T4: con s36 abierta, el error tardío de s37 dejó el placeholder "V" de s37). Guard `if (galleryImg.isConnected)`; T4 pasa y T4b confirma que la foto rota de la propiedad abierta sigue cayendo al placeholder. En `prop-card` no aplica: la `<img>` vieja conserva su padre dentro del subárbol separado (T5: sin excepción, 0 placeholders en el grid). El `onerror` viejo no tenía este efecto (`closest()` en un nodo separado da `null`); lo introdujo el arreglo.
 2. **Menor — el LOG cita resultados de ejecución no verificables desde el código.** → **Claude: ACEPTADO.** El script de pruebas y sus resultados antes/después quedan en `..\CENTRO DE OPERACIONES\AUDITORIAS\resultados\2026-09-29-fallback-fotos-rotas_pruebas.js` para correrlo de nuevo.
+
+### 2026-09-29 · Codex (CLI) · Ronda 3 — enlace discreto "ver" · VEREDICTO: APROBADO
+36 links restaurados = respaldo JSON; sin texto "Airbnb" visible; `amenity-ref` condicionado a `p.airbnb` con `rel="noopener noreferrer nofollow"`; cero cambios en precios/specs/amenities; array 47/47. Salida: `..\CENTRO DE OPERACIONES\AUDITORIASesultados6-09-29-lote-s37-s47_codex_R3.txt`.
+
+### 2026-09-29 · Claude · DEPLOY `aedf4f2` (orden de Andrés) · verificado en producción
+11/11 propiedades nuevas en vivo; precios s39=605 · s40=1375 · s41=1225 · s46=1190 · s47=1605; 19/19 brochures 200 (el primer 404 de villa-club-envigado.pdf fue propagación del CDN); MAESTRO-LANDING.md, AGENTS.md, about.txt, hero-*.txt, *.py → 404; robots/sitemap/video 200; modal s45 sin "Airbnb", con "ver" y PDF; 0 errores de consola. Nota: `googledf73c3ac78ab4eeb.html` responde 308 → versión sin extensión (200) por `cleanUrls`, preexistente.
+
+### 2026-10-06 · Codex (CLI) · Alta de s48 · VEREDICTO: APROBADO
+Specs/textos sustentados (jacuzzi y estacionamiento no publicados), precio 241÷2×1.15→140, array 48/48 sin regresiones, brochure "HASTA 2 HUÉSPEDES" sin "mínimo 3 noches". Salida: `..\CENTRO DE OPERACIONES\AUDITORIASesultados6-10-06-s48_codex.txt`.
 
