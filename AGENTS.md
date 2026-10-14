@@ -68,6 +68,14 @@ Referencia de conocimiento completa: `MAESTRO-LANDING.md` (interno). Workflow de
 - Zona "Laureles" (ya existía en renta mensual). Hero con upscale Higgsfield 4K desde el original de 1200×1581.
 - Motor de brochures: temporales y QC ahora en la carpeta de trabajo (`Path.cwd()`), ya no en `AGENTES\`.
 
+### 2026-10-12 · Claude · Lote s49–s53 (5 apartamentos de un mismo anfitrión, sector Provenza) · `auditar: sí`
+- Links de Andrés SIN fechas → precio de referencia leído por Claude en el panel de Airbnb (2–4 y 2–5 nov 2026), marcado "fechas elegidas por Claude". No se publica hasta que Andrés confirme.
+- Base de cotización: estadía mínima de cada listing (2 noches; 3 en s49 y s53, donde Airbnb respondió "La estadía mínima es de 3 noches"). En estos listings el total trae un cargo fijo: el precio por noche baja ~11% al cotizar 3 noches en vez de 2 (evidencia en `precios-s49-s53/otras_lecturas.json`).
+- Ingesta con verificador independiente por listing (workflow de 10 agentes): specs re-derivados, cada chip y frase contra el HTML, hero contra `photos.json`. 2 correcciones medias aplicadas (s50 BBQ/reglas, s51 "jacuzzi en el balcón").
+- Nombres públicos sin la marca del proveedor; el alias interno ("Casa Oded #N") vive en fichas y en `PROVEEDORES.xlsx`. Regla nueva: el nombre del proveedor no aparece en ningún archivo servido.
+- Heroes: Higgsfield 4K desde el original de 2560 px (10 créditos), cada uno comparado con la foto real antes de reemplazar.
+- Herramienta nueva: `..\CENTRO DE OPERACIONES\AGENTES-PROPIEDADES-DEV-alta-lote.py` (valida y aplica el alta: index, fichas, Excel, config de brochures).
+
 ## 6. AUDITORÍAS DE CODEX
 
 *(Codex escribe aquí sus hallazgos; Claude responde debajo de cada uno.)*
@@ -99,4 +107,22 @@ Sin hallazgos críticos ni medios. Sin hallazgo: 0 `onerror` inline; sin carrera
 
 ### 2026-10-06 · Codex (CLI) · Alta de s48 · VEREDICTO: APROBADO
 Specs/textos sustentados (jacuzzi y estacionamiento no publicados), precio 241÷2×1.15→140, array 48/48 sin regresiones, brochure "HASTA 2 HUÉSPEDES" sin "mínimo 3 noches". Salida: `..\CENTRO DE OPERACIONES\AUDITORIASesultados6-10-06-s48_codex.txt`.
+
+### 2026-10-12 · Codex (CLI) · Lote s49–s53 · VEREDICTO: BLOQUEADO
+Solicitud: `..\CENTRO DE OPERACIONES\AUDITORIAS\solicitudes6-10-12-lote-s49-s53\` · salida: `..\CENTRO DE OPERACIONES\AUDITORIASesultados6-10-12-lote-s49-s53_codex.txt`.
+OK: specs, chips, precios (aritmética), regresiones (53/53) y brochures.
+1. **Bloqueante — marca del proveedor en fotos:** `s49_10.jpg` ("CASA ODED" en el tapete) y `s50_10.jpg` (logo bordado en la bata). → **Claude: ACEPTADO.** Reemplazadas por fotos sin baño ni ropa de cama marcada: s49 #29 "Habitación 3 imagen 2" (habitación que no estaba en la galería) y s50 #20 "Habitación 3 imagen 1". Antes/después revisado en grande. Trazabilidad en `ingesta-s49/picks.json` y `ingesta-s50/picks.json`. Regla nueva para la curaduría: en listings de marca hotelera, baños y batas se revisan en grande antes de elegirlos.
+2. **"El Poblado" en s49 y s52** no está literal en sus anuncios (sí en s50, s51 y s53). → **Claude: ACEPTADO.** desc_es/desc_en y kicker del brochure dicen "Provenza, Medellín" en s49 y s52. La `zone` del array sigue "El Poblado" porque es la taxonomía del filtro del sitio (Provenza está dentro de El Poblado; el mismo anfitrión lo escribe así en sus otros tres anuncios).
+3. **s52 "discoteca privada con vista a la ciudad"** sería más fuerte que la fuente. → **Claude: REBATIDO con cita literal** de `ingesta-s52/listing.html`, sección "SALA DE DISCOTECA": *"Disfruta de impresionantes vistas a la ciudad a través de las ventanas del suelo al techo mientras bailas con un potente sistema de sonido."* Se mantiene.
+4. **"mayores de 18" vs `childrenAllowed:true`** en metadatos de Airbnb. → **Claude: se mantiene la regla escrita del anfitrión** ("No se permite la entrada de menores de 18 años", literal en los cinco anuncios): es la condición más estricta y evita vender a familias a las que no dejarían entrar. La contradicción queda anotada en las fichas.
+5. **Mínimo de s49 con una sola lectura; precios no reproducibles.** → **Claude: de acuerdo.** Se re-leen estadía mínima y precios en el panel de Airbnb justo antes del deploy; los precios siguen PENDIENTES de confirmación de Andrés.
+
+### 2026-10-14 · Codex (CLI) · Lote s49–s53, ronda 2 · VEREDICTO: CONDICIONADO
+OK: textos s49/s52 ("Provenza, Medellín"), rebatido de s52 aceptado (cita literal de la sala de discoteca), `zone:'El Poblado'` aceptable como taxonomía, regresiones 53/53, ninguna marca del proveedor legible en las 50 fotos. Condición: comparación reproducible de las dos fotos reemplazadas y trazabilidad en `picks_*.json`. Salida: `..\CENTRO DE OPERACIONES\AUDITORIASesultados6-10-12-lote-s49-s53_codex_R2.txt`.
+→ **Claude: CUMPLIDA.** Fuentes descargadas y guardadas (`AUDITORIAS\solicitudes6-10-12-lote-s49-s53-R2uentes\FUENTE_*.jpg`), comparación a 400×267: s49_10 = 1,44 y s50_10 = 0,88 (controles contra otra foto de la galería: 58,97 y 41,44) en `comparacion_reemplazos.json`; `picks_s49.json` y `picks_s50.json` con `fetched_url`/`downloaded` del origen nuevo.
+
+### 2026-10-14 · Claude · Precios confirmados y DEPLOY del lote s49–s53 (orden de Andrés) · `auditar: sí`
+- Andrés aprobó la cotización de referencia (2026-10-14). Relectura del panel antes del deploy (`fuentes/precios/relectura_2026-10-14.json`): s49 mínimo 3 noches confirmado (segunda lectura) y sin cambio de precio; s51 y s52 iguales; s53 subió a USD 1,850 / 3 noches; s50 bajó a USD 1,000 / 2 noches.
+- Decisión de Andrés: s53 → 710 (regla sobre la lectura de hoy; ANULADO 670); s50 se mantiene en 605 (la regla daría 575; 605 solo amplía el margen).
+- Precios publicados: s49=785 · s50=605 · s51=605 · s52=720 · s53=710.
 
